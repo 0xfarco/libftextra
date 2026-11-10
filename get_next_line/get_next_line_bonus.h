@@ -1,0 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fcholakk <fcholakk@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/27 15:44:46 by fcholakk          #+#    #+#             */
+/*   Updated: 2026/11/03 08:54:10 by fcholakk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+
+# include <stdlib.h>
+# include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2048
+# endif
+
+# ifndef MAX_FD
+#  define MAX_FD 4096
+# endif
+
+# define LINE_CAP 64
+
+typedef struct s_state
+{
+	char	*buf;
+	char	*ptr;
+	ssize_t	left;
+}	t_state;
+
+typedef struct s_line
+{
+	char	*data;
+	size_t	len;
+	size_t	cap;
+}	t_line;
+
+char	*get_next_line(int fd);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+int		push_char(t_line *l, char c);
+char	*finish_line(t_line *l);
+
+#endif
